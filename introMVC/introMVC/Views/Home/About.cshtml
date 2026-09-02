@@ -1,0 +1,10 @@
+﻿
+@model introMVC.Models.ViewModels.AboutViewModel
+@{
+    ViewBag.Title = "About";   
+}
+
+<h2>@Model.Title</h2>
+
+<span>Server'ın saati: @Model.ServerDate.ToLongDateString()</span>
+

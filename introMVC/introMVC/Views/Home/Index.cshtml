@@ -1,0 +1,39 @@
+﻿@model IEnumerable<introMVC.Models.Product>
+@{
+   
+}
+
+
+    <div> 
+        <h1>Aha başlık</h1>
+        <p>Bu da paragraf</p>
+        <p>Gönderilen veri: @ViewBag.Ad</p>
+    </div>
+
+    <ul>
+        @foreach (var item in ViewBag.Items)
+        {
+            <li>@item</li>
+        }
+
+
+    </ul>
+
+    <table>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name.ToUpper()</td>
+                <td>@product.Price TL</td>
+
+            </tr>
+        }
+    </table>
+
+    <nav>
+        @Html.ActionLink("Hakkımda","About","Home")
+    </nav>
+
+
+
