@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ECommerceSample.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@if (TempData["durum"] != null)
+{
+    <div class="alert alert-danger">
+        <p>@TempData["durum"]</p>
+    </div>
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+           <img src="@item.ImageUrl" alt="@item.Name" class="img-fluid" />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id  })
+        </td>
+    </tr>
+}
+
+</table>

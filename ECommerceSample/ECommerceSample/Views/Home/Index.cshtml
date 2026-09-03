@@ -17,7 +17,11 @@
 
             @foreach (var item in Model)
             {
-                <li>@item.Name ürününün fiyatı: @item.Price</li>
+                <li>
+                    @item.Name ürününün fiyatı: @item.Price
+
+                    @Html.ActionLink("Detay","Detail", new {id=item.Id})
+                </li>
             }
         </ul>
     </div>

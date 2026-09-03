@@ -1,4 +1,5 @@
 ﻿using ECommerceSample.Data;
+using ECommerceSample.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,26 @@ namespace ECommerceSample.Controllers
     {
         public ActionResult Index()
         {
-            using (var db = new CatalogDbContext())
+            //using (var db = new CatalogDbContext())
+            //{
+            //    var allProducts = db.Products.OrderBy(p => p.Price).ToList();
+            //    return View(allProducts);
+            //}
+
+            using (var productService = new ProductService())
             {
-                var allProducts = db.Products.OrderBy(p => p.Price).ToList();
+                var allProducts = productService.GetProducts();
                 return View(allProducts);
             }
-           
+        }
+
+        public ActionResult Detail(int id)
+        {
+            using (var productService = new ProductService())
+            {
+                var product = productService.GetProduct(id);
+                return View(product);
+            }
         }
 
         public ActionResult About()
@@ -32,5 +47,7 @@ namespace ECommerceSample.Controllers
 
             return View();
         }
+
+       
     }
 }
