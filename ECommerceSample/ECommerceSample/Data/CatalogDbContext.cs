@@ -11,10 +11,22 @@ namespace ECommerceSample.Data
     {
         public CatalogDbContext() : base("CatalogConnection")
         {
-                
+            this.Configuration.LazyLoadingEnabled = true;    
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+
+            modelBuilder.Entity<Product>().HasOptional(p => p.Category);
+
+            modelBuilder.Entity<Category>().HasMany(c => c.Products)
+                                           .WithOptional(p => p.Category)
+                                           .HasForeignKey(p => p.CategoryId)
+                                           .WillCascadeOnDelete(false);
+
+        }
     }
 }

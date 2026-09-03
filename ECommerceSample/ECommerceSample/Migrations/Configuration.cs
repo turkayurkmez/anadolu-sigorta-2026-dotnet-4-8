@@ -19,12 +19,22 @@
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
+
+
+            context.Categories.AddOrUpdate(
+                 new Category {  Id =1, Name ="Elektronik", Description="Bilgisayar ve ev elektroniği"},
+                 new Category { Id = 2, Name = "Giyim", Description = "Kadın ve erkek her mevsim için..." }
+
+                );
+
             context.Products.AddOrUpdate(
-                new Product { Id=1, Name = "Ürün A", Price = 10, StockCount = 100 },
-                new Product { Id=2, Name = "Ürün B", Price = 50, StockCount = 100 },
-                new Product { Id=3, Name = "Ürün C", Price = 100, StockCount = 100 }
+                new Product { Id=1, Name = "Ürün A", Price = 10, StockCount = 100, CategoryId=1 },
+                new Product { Id=2, Name = "Ürün B", Price = 50, StockCount = 100, CategoryId=2 },
+                new Product { Id=3, Name = "Ürün C", Price = 100, StockCount = 100, CategoryId=1 }
 
             );
+
+
         }
     }
 }
