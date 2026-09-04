@@ -11,7 +11,9 @@ namespace ECommerceSample.Data
     {
         public CatalogDbContext() : base("CatalogConnection")
         {
-            this.Configuration.LazyLoadingEnabled = true;    
+            this.Configuration.LazyLoadingEnabled = false;
+            //Dikkat: Web API içerisinde EF tarafından üretilen Dynamic Proxies serialize edilemeyeceği için Dynamic Proxy üretimini kapattık:
+            this.Configuration.ProxyCreationEnabled = false; 
         }
 
         public DbSet<Product> Products { get; set; }

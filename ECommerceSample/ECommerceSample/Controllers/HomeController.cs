@@ -18,11 +18,12 @@ namespace ECommerceSample.Controllers
             //    return View(allProducts);
             //}
 
-            using (var productService = new ProductService())
-            {
-                var allProducts = productService.GetProducts();
-                return View(allProducts);
-            }
+            var productService = new ProductService();
+
+
+            var allProducts = productService.GetProducts();
+            return View(allProducts);
+
         }
 
         public ActionResult Detail(int id)
@@ -48,6 +49,6 @@ namespace ECommerceSample.Controllers
             return View();
         }
 
-       
+
     }
 }

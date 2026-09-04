@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
+    </head>
+    <body>
+
+        <ul id="products">
+        </ul>
+
+        <script>
+            $(document).ready(function(){
+                $.ajax({
+                    url:"https://localhost:44374/api/productsapi",
+                    method:'GET',
+                    success:function(data){
+                        console.log(data);
+                        $.each(data, function(index,element){
+                            let li = $('<li>'+element.Name+ ' ' + element.Price +' TL' + '</li>');
+                        
+                            $('#products').append(li); 
+                        });
+                    }
+
+                })
+            })
+        </script>
+
+    </body>
+</html>
