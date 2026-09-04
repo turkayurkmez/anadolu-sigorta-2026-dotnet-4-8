@@ -34,6 +34,9 @@
 
             );
 
+            context.Users.AddOrUpdate(
+                new User { Id =2, UserName="admin", Password="admin123", Role="admin", Email="admin@test.com", CreatedDate=new DateTime(2026,9,4,12,30,0)}
+                );
 
         }
     }

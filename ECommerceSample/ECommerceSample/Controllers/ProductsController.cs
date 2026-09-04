@@ -22,11 +22,13 @@ namespace ECommerceSample.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Create()
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Product product)
         {
